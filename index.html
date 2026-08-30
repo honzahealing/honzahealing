@@ -585,7 +585,7 @@
         <li><a href="#tattoo">Tetování</a></li>
         <li><a href="#aura">Aura Photo</a></li>
         <li><a href="#gallery">Obrazy</a></li>
-        <li><a href="#reviews">Reference</a></li>
+        <li style="display:none"><a href="#reviews">Reference</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Kontakt</a></li>
     </ul>
@@ -601,7 +601,7 @@
     <a href="#tattoo" onclick="cm()">Tetování</a>
     <a href="#aura" onclick="cm()">Aura Photo</a>
     <a href="#gallery" onclick="cm()">Obrazy</a>
-    <a href="#reviews" onclick="cm()">Reference</a>
+    <a href="#reviews" onclick="cm()" style="display:none">Reference</a>
     <a href="#faq" onclick="cm()">FAQ</a>
     <a href="#contact" onclick="cm()">Kontakt</a>
 </div>
@@ -767,7 +767,7 @@
     <div class="rv" style="text-align:center;margin-top:36px"><a href="#contact" class="svc-cta" data-prefill="obraz">Mám zájem o obraz →</a></div>
 </div></section>
 
-<section class="reviews" id="reviews"><div class="sc2">
+<section class="reviews" id="reviews" style="display:none"><div class="sc2">
     <div class="revi rv">
         <div class="stg">Reference</div>
         <h2 class="stt">Co říkají moji <em>klienti</em></h2>
@@ -1161,6 +1161,7 @@ window.addEventListener('scroll',function(){
     var navLinks = document.querySelectorAll('.nk a');
     var current = '';
     sections.forEach(function(sec){
+        if(sec.offsetParent === null) return; /* skip hidden sections (e.g. display:none) */
         var top = sec.offsetTop - 120;
         if(scrollY >= top) current = sec.getAttribute('id');
     });
